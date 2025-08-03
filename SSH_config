@@ -1,0 +1,40 @@
+Host nazgul.vpn
+	Hostname 192.168.4.41
+	Port 22
+	User david
+
+Host nazgul.minecraft
+	Hostname 192.168.4.160
+	Port 22
+	User david
+
+Host nazgul.arch
+	Hostname 192.168.4.192
+	Port 22
+	User david
+
+Host nazgul.homeassistant
+	Hostname 192.168.4.137
+	Port 22
+	User admin
+
+Host nazgul.jellyfin
+	Hostname 192.168.4.174
+	Port 22
+	User david
+Host godly
+	Hostname 192.168.4.135
+	Port 22
+	User david
+Host nazgul.ubuntu
+	Hostname 192.168.4.105
+	Port 22
+	User david
+Host nazgul.yellowgrid
+	Hostname 192.168.4.178
+	Port 22
+	User david
+Host shire
+	Hostname 80.211.204.214
+	Port 22
+	User david
