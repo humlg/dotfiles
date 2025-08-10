@@ -34,7 +34,7 @@ Host nazgul.yellowgrid
 	Hostname 192.168.4.178
 	Port 22
 	User david
-Host shire
-	Hostname 80.211.204.214
+Host backend.ciw.cz
+	Hostname orac.ciw.cz
 	Port 22
-	User david
+	User nazgul
