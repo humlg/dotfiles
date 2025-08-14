@@ -23,7 +23,7 @@ Host nazgul.jellyfin
 	Port 22
 	User david
 Host godly
-	Hostname 192.168.4.135
+	Hostname 192.168.4.133
 	Port 22
 	User david
 Host nazgul.ubuntu

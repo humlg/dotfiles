@@ -1,5 +1,4 @@
 { 
-
   "position": "top",
   "layer": "top",
   "exclusive": true,
@@ -63,6 +62,7 @@
     "separate-outputs": true
   },
   "hyprland/workspaces": {
+    "all-outputs": false,
     "format": "{id}",
     "on-click": "activate",
     "format-icons": {
@@ -83,6 +83,7 @@
 
         },
     "sort-by-number": true,
+    }
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
