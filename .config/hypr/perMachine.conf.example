@@ -1,12 +1,18 @@
+#################
+### VARIABLEA ###
+#################
+
+$lockScreen = swaylock -f -i /home/david/Pictures/Wallpapers/Purple/Astronaut_rocket.jpg
+
 ################
 ### MONITORS ###
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
 monitor=,preferred,0x0,1.5
-monitor=DP-1,2560x1440@165.08,auto,1.25 #Dell 31.5"
-#monitor=DP-3,1920x1080@100,1280x-300,1
-monitor=HDMI-A-1,1920x1080@74.97,auto,1.2 # Iiyama 24"
+monitor=DP-1,1920x1080@100,1280x-300,1
+monitor=DP-3,1920x1080@100,1280x-300,1
+monitor=HDMI-A-1,preffered,auto,1,mirror,eDP-1
 #unscale XWayland
 xwayland {
   force_zero_scaling = true
