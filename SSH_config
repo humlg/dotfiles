@@ -38,3 +38,8 @@ Host backend.ciw.cz
 	Hostname orac.ciw.cz
 	Port 22
 	User nazgul
+Host yg-dev
+    # YellowGrid staging VDS from master.cz
+    HostName yg.ciw.cz
+    Port 22
+    User root
