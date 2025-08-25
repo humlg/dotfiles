@@ -22,9 +22,9 @@
     "pulseaudio",
     "pulseaudio#microphone",
     "battery",
-    "custom/separator",
+    "custom/separator1",
     "clock",
-    "custom/separator",
+    "custom/separator2",
     "tray"
   ],
 
@@ -51,7 +51,11 @@
         "format": " ", 
         "tooltip": false
   },
-  "custom/separator": {
+  "custom/separator1": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/separator2": {
     "format": "",
     "tooltip": false
   },
@@ -132,7 +136,7 @@
     "format-source-muted": "󰍭",
     "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-"
   },
 
    "hyprland/language": {
