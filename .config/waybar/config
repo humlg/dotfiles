@@ -12,7 +12,7 @@
   "modules-left": [
     "cpu",
     "memory",
-    "disk",
+    "disk"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -22,9 +22,10 @@
     "pulseaudio",
     "pulseaudio#microphone",
     "battery",
+    "custom/separator",
     "clock",
     "custom/separator",
-    "tray",
+    "tray"
   ],
 
   "battery": {
@@ -47,7 +48,7 @@
   "spacing": 8
   },
    "custom/spacer": {
-        "format": " ", // Empty space
+        "format": " ", 
         "tooltip": false
   },
   "custom/separator": {
@@ -79,10 +80,9 @@
       "urgent": "",
       "persistent": "",
       "focused": "",
-      "default": "",
-
+      "default": ""
         },
-    "sort-by-number": true,
+    "sort-by-number": true
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -122,7 +122,7 @@
       "default": [
         "",
         "",
-        "",
+        ""
       ]
     }
   },
@@ -141,7 +141,7 @@
 
   "format-cs": "CZ",
 
-  "format-en": "US",
+  "format-en": "US"
 
 },
   "disk":{
@@ -149,5 +149,5 @@
   "path": "/home",
 	"format": "<span color='#a6e3a1'> </span><span color='#cdd6f4'>{free}</span>",
 	"unit": "GB"
-},
+}
 }
