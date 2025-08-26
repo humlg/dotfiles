@@ -145,6 +145,9 @@ tooltip {
     margin-left: 0px;
     margin-right:0px;
 }
+#memory.warning{
+    color: #ff5555 /* red */
+}
 
 #disk {
     color: #f9e2af;
@@ -185,6 +188,9 @@ tooltip {
    margin-right:0px;
    margin-left: 0px;
 }
+#cpu.warning{
+    color: #ff5555 /* red */
+}
 
 #custom-weather {
    border-radius: 13px 13px 13px 13px;
@@ -197,15 +203,12 @@ tooltip {
     margin-left: 0px;
     margin-right:0px;
 }
-
 #battery.critical {
     color: #ff5555; /* red */
 }
-
 #battery.warning {
     color: #ffae42; /* orange */
 }
-
 #battery.good {
     color: #cdd6f4; /* green */
 }

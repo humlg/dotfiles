@@ -8,7 +8,7 @@
   "margin-top": 0,
   "margin-left": 5,
   "margin-right": 5,
-  "height": 41,
+  "height": 1,
   "modules-left": [
     "cpu",
     "memory",
@@ -99,16 +99,21 @@
   },
 
   "cpu": {
-    "format": "<span color='#AE57D6'>󰍛</span> <span color='#cdd6f4'>{usage}%</span>",
+    "states": {
+            "warning": 90
+    },
+    "format": "<span color='#AE57D6'>󰍛 </span>{usage}%",
     "interval": 1,
     "format-alt-click": "click",
-    "format-alt": "<span color='#00FF00'>{icon0}{icon1}{icon2}{icon3}</span> <span color='#FFFFFF'>{usage:>2}%</span> <span color='#00FF00'>󰍛</span>",
-    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "on-click": "gnome-system-monitor"
+    "format-alt": "<span color='#AE57D6'>󰍛 </span>{usage}% {avg_frequency}GHz",
+    "on-click": "btop"
   },
   "memory": {
+    "states": {
+      "warning": 10
+    },
     "interval": 1,
-    "format": "<span color='#AE57D6'></span> <span color='#cdd6f4'>{used:0.1f}G</span>"
+    "format": "<span color='#AE57D6'></span> <span color='#cdd6f4'>{used:0.1f}GiB</span>"
   },
 
   "pulseaudio": {
