@@ -43,3 +43,7 @@ Host yg-dev
     HostName yg.ciw.cz
     Port 22
     User root
+Host nas
+    HostName 192.168.4.180
+    Port 22
+    User sshd

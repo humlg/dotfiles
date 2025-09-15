@@ -10,6 +10,7 @@ source = perMachine.conf
 # Set programs that you use
 $terminal = kitty
 $fileManager = dolphin
+#$menu = wofi --allow-images --show drun -a
 $menu = rofi -show drun -show-icons
 $webBrowser = MOZ_ENABLE_WAYLAND=1 firefox
 #$lockScreen = swaylock -f -i /home/david/Pictures/Wallpapers/Purple/Astronaut_rocket.jpg
@@ -29,7 +30,7 @@ env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
 env = QT_QPA_PLATFORMTHEME,qt5ct
 env = QT_QPA_PLATFORMTHEME,qt6ct
-env = QT_STYLE_OVERRIDE,kvantum
+
 #####################
 ### LOOK AND FEEL ###
 #####################
