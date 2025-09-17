@@ -8,11 +8,21 @@ $lockScreen = swaylock -f -i /home/david/Pictures/Wallpapers/Purple/Astronaut_ro
 ### MONITORS ###
 ################
 
-# See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,0x0,1.5
-monitor=DP-1,1920x1080@100,1280x-300,1
-monitor=DP-3,1920x1080@100,1280x-300,1
+# Primary monitor
+monitor=eDP-1,preferred,0x0,1.5
+
+# Fallback mirroring
 monitor=HDMI-A-1,preffered,auto,1,mirror,eDP-1
+monitor=DP-1,preffered,auto,1,mirror,eDP-1
+monitor=DP-3,preffered,auto,1,mirror,eDP-1
+monitor=HEADLESS-8,preffered,auto,1.5
+#Secondary monitors
+monitor=desc:Iiyama North America PL2797H 12497503A1590,1920x1080@100,1280x-550,1
+
+###############
+### SCALING ###
+###############
+
 #unscale XWayland
 xwayland {
   force_zero_scaling = true
