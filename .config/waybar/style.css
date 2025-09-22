@@ -75,6 +75,7 @@ tooltip {
 #memory,
 #disk,
 #battery,
+#power-profiles-daemon,
 #tray {
     background: #1e1e2e;
     opacity: 1.0;
@@ -199,7 +200,7 @@ tooltip {
 }
 
 #battery {
-    border-radius: 13px 13px 13px 13px;
+    border-radius: 0px 13px 13px 0px;
     margin-left: 0px;
     margin-right:0px;
 }
@@ -211,4 +212,9 @@ tooltip {
 }
 #battery.good {
     color: #cdd6f4; /* green */
+}
+#power-profiles-daemon {
+    border-radius: 13px 0px 0px 13px;
+    margin-left: 0px;
+    margin-right:0px;
 }
