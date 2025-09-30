@@ -21,12 +21,13 @@
   ],
   "modules-right": [
     "tray",
+    "custom/dropdown",
     "hyprland/language",
     "pulseaudio",
     "pulseaudio#microphone",
     "custom/separator1",
     "clock",
-    "custom/separator2"
+    "custom/separator2",
   ],
 
   "battery": {
@@ -35,9 +36,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "<span color='#AE57D6'>{icon}</span> {capacity}%",
-        "format-charging": "<span color='#AE57D6'></span> {capacity}%",
-        "format-discharging": "<span color='#AE57D6'>{icon}</span> {capacity}%",
+        "format": "{icon} <span color='#777777'>{capacity}%</span>",
+        "format-charging": " <span color='#777777'>{capacity}%</span>",
+        "format-discharging": "{icon} <span color='#777777'>{capacity}%</span>",
         "format-icons": [
             "",
             "",
@@ -94,8 +95,8 @@
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "<span color='#C07CDF'>{:%H:%M:%S}</span>",
-    "format-alt": "<span color='#C07CDF'>{:%Y-%m-%d %H:%M:%S}</span>",
+    "format": "{:%H:%M:%S}",
+    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
     "interval": 1
   },
 
@@ -103,26 +104,27 @@
     "states": {
             "warning": 90
     },
-    "format": "<span color='#AE57D6'>󰍛 </span>{usage}%",
+    "format": "󰍛 <span color='#777777'>{usage}%</span>",
     "interval": 1,
     "format-alt-click": "click",
-    "format-alt": "<span color='#AE57D6'>󰍛 </span>{usage}% {avg_frequency}GHz",
+    "format-alt": "󰍛 <span color='#777777'>{usage}% {avg_frequency}GHz</span>",
     "on-click": "btop"
   },
   "memory": {
     "states": {
-      "warning": 10
+      "warning": 90
     },
     "interval": 1,
-    "format": "<span color='#AE57D6'></span> <span color='#cdd6f4'>{used:0.1f}GiB</span>"
+    "format": " <span color='#777777'>{used:0.1f}GiB</span>"
   },
 
   "pulseaudio": {
-    "format": "<span color='#AE57D6'>{icon} </span><span color='#cdd6f4'>{volume}%</span>",
-    "format-bluetooth": "<span color='#AE57D6'>{icon}</span>  <span color='#cdd6f4'>{volume}%</span>",
+    "format": "{icon} <span color='#777777'>{volume}%</span>",
+    "format-bluetooth": "{icon} <span color='#777777'>{volume}%</span>",
     "tooltip": false,
-    "format-muted": "<span color='#ff5555'>󰝟 --%</span>",
+    "format-muted": "<span color='#ff5555'>󰝟 --%</span>", //red
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
     "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 10%-",
     "format-icons": {
@@ -141,28 +143,30 @@
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": "<span color='#AE57D6'> </span><span color='#cdd6f4'>{volume}%</span>",
+    "format-source": " <span color='#777777'>{volume}%</span>",
     "format-source-muted": "<span color='#ff5555'>󰍭 --%</span>",
     "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-"
   },
 
-   "hyprland/language": {
-
-  "format": "<span color='#AE57D6'>󰌌 </span><span color='#cdd6f4'>{}</span>",
+  "hyprland/language": {
+  "format": "󰌌 <span color='#777777'>{}</span>",
   "format-cs": "CZ",
   "format-en": "US"
-
 },
+
   "disk":{
+  "states": {
+      "warning": 90
+    },
 	"interval": 10,
   "path": "/home",
-	"format": "<span color='#AE57D6'> </span><span color='#cdd6f4'>{free}</span>",
+	"format": " <span color='#777777'>{free}</span>",
 	"unit": "GB"
 },
   "power-profiles-daemon": {
-    "format": " <span color='#AE57D6'>{icon}</span>",
+    "format": "{icon}",
     "tooltip-format": "Power profile: {profile}",
     "tooltip": true,
     "format-icons": {
@@ -171,5 +175,13 @@
       "balanced": "󰗑",
       "power-saver": ""
    }
+  },
+
+  "custom/dropdown":{
+    "format": "  ",
+    "tooltip":false,
+    "min-height": 1,
+    "class": "dropdown",
+    "on-click": "kitty", //Add secondary waybar here
   }
 }

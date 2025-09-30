@@ -12,8 +12,6 @@
         "right": 3         // Right padding
     },
     "color": {             // Override logo colors
-        "1": "magenta",
-	"2": "magenta"
     }
   },
 
@@ -58,5 +56,6 @@
     "disk",
     "localip",
     "break",
+    "colors",
   ]
 }
