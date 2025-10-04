@@ -1,1 +1,26 @@
 # dotfiles
+
+# What has to be installed?
+- waypaper
+- swww
+- pywal
+- kitty
+- fastfetch
+- zsh
+- oh-my-zsh
+- waybar
+- rofi
+- swaync
+- hyprland
+- hypridle
+- hyprlock
+- power-profiles-daemon (if laptop)
+- ttf-jetbrains-mono
+- ttf-jetbrains-mono-nerd
+- thunar
+- firefox
+- galculator
+- pavucontrol
+- cliphist
+- hyprshot
+
