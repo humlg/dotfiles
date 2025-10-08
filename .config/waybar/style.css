@@ -90,6 +90,7 @@ tooltip { /* tooltip on hover */
     border-radius: 13px;
     margin-right: 5px;
     margin-left: 5px;
+    color: @color2;
 }
 
 #workspaces {
