@@ -5,6 +5,6 @@ if pgrep -x "hyprsunset" > /dev/null; then
     pkill -x hyprsunset
     notify-send "Blue light filter: OFF"
 else
-    nohup hyprsunset --temperature 2500
+    nohup hyprsunset --temperature 2500 &
     notify-send "Blue light filter: ON"
 fi

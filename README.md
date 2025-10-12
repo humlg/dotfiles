@@ -30,3 +30,7 @@
 - Special baterry event driven actions (screen brightness, kb backlighting, power prifile?)
 - fix the fucking sound already!
 - script a SUPER+X scratchpad with terminal, todo, cava?
+- Remove vidible keys when entering password in SDDM
+
+## Server maintanance
+- Check jellyfin server, update and clean

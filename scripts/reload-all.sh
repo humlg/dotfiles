@@ -1,3 +1,3 @@
 hyprctl reload
-pkill waybar && waybar
-pkill swaync && swaync
+pkill waybar ; waybar
+swaync-client -rs
