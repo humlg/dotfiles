@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+# Combine high-quality video with its original audio and add a second track from
+# a matching low-quality file, saving the result as MKV.
+# Usage: redub [-f|--force] [-n|--dry-run] AUDIO_DIR VIDEO_DIR OUTPUT_DIR
+
+set -Euo pipefail
+
+print_usage() {
+  cat <<'EOF'
+Usage: redub [options] <audio_dir> <video_dir> <output_dir>
+
+Copies the video (and its original audio/subtitle/data tracks) from
+<video_dir>, then adds the primary audio track from the matching file in
+<audio_dir>. The combined result is written as MKV into <output_dir>.
+Files are matched by their relative path (without file extension) inside each
+directory. Non-matching files are skipped with a warning.
+
+Options:
+  -f, --force     Overwrite output files if they already exist.
+  -n, --dry-run   Print the ffmpeg commands instead of executing them.
+  -h, --help      Show this help message and exit.
+
+Dependencies: ffmpeg (and ffprobe for best results).
+EOF
+}
+
+die() {
+  local message=$1
+  printf 'redub: %s\n' "$message" >&2
+  exit 1
+}
+
+warn() {
+  printf 'redub: warning: %s\n' "$1" >&2
+}
+
+require_cmd() {
+  command -v "$1" >/dev/null 2>&1 || die "required command '$1' not found in PATH"
+}
+
+resolve_dir() {
+  local dir=$1
+  [[ -d "$dir" ]] || die "directory not found: $dir"
+  (cd "$dir" && pwd)
+}
+
+FORCE=0
+DRY_RUN=0
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -f|--force)
+      FORCE=1
+      shift
+      ;;
+    -n|--dry-run)
+      DRY_RUN=1
+      shift
+      ;;
+    -h|--help)
+      print_usage
+      exit 0
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -*)
+      die "unknown option: $1"
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+[[ $# -eq 3 ]] || {
+  print_usage >&2
+  exit 1
+}
+
+require_cmd ffmpeg
+
+AUDIO_DIR=$(resolve_dir "$1")
+VIDEO_DIR=$(resolve_dir "$2")
+OUTPUT_DIR=$3
+mkdir -p "$OUTPUT_DIR" || die "unable to create output directory: $OUTPUT_DIR"
+OUTPUT_DIR=$(cd "$OUTPUT_DIR" && pwd)
+
+VIDEO_EXTS=(mkv mp4 mov m4v avi ts m2ts webm mpg mpeg flv wmv)
+
+FIND_ARGS=(-type f "(")
+for idx in "${!VIDEO_EXTS[@]}"; do
+  if [[ $idx -gt 0 ]]; then
+    FIND_ARGS+=(-o)
+  fi
+  FIND_ARGS+=(-iname "*.${VIDEO_EXTS[$idx]}")
+done
+FIND_ARGS+=(")")
+
+TOTAL=0
+SUCCESS=0
+SKIPPED=0
+FAILED=0
+
+while IFS= read -r -d '' AUDIO_FILE; do
+  ((TOTAL++))
+  REL_PATH=${AUDIO_FILE#"$AUDIO_DIR"/}
+  REL_NO_EXT=${REL_PATH%.*}
+
+  VIDEO_FILE=""
+  for ext in "${VIDEO_EXTS[@]}"; do
+    CANDIDATE="$VIDEO_DIR/${REL_NO_EXT}.${ext}"
+    if [[ -f "$CANDIDATE" ]]; then
+      VIDEO_FILE=$CANDIDATE
+      break
+    fi
+  done
+
+  if [[ -z "$VIDEO_FILE" ]]; then
+    warn "no matching high-quality video found for $REL_PATH"
+    ((SKIPPED++))
+    continue
+  fi
+
+  OUTPUT_PATH="$OUTPUT_DIR/${REL_NO_EXT}.mkv"
+  mkdir -p "$(dirname "$OUTPUT_PATH")"
+
+  if [[ -e "$OUTPUT_PATH" && $FORCE -ne 1 ]]; then
+    warn "output exists, skipping (use --force to overwrite): $OUTPUT_PATH"
+    ((SKIPPED++))
+    continue
+  fi
+
+  CMD=(ffmpeg -hide_banner -loglevel error)
+  if [[ $FORCE -eq 1 ]]; then
+    CMD+=(-y)
+  fi
+  CMD+=(-i "$VIDEO_FILE" -i "$AUDIO_FILE" -map 0:v -map 0:a? -map 0:s? -map 0:d? -map 1:a:0? -c:v copy -c:a copy -c:s copy -c:d copy "$OUTPUT_PATH")
+
+  if [[ $DRY_RUN -eq 1 ]]; then
+    printf '%q ' "${CMD[@]}"
+    printf '\n'
+    ((SUCCESS++))
+    continue
+  fi
+
+  if "${CMD[@]}"; then
+    ((SUCCESS++))
+  else
+    warn "ffmpeg failed: $REL_PATH"
+    ((FAILED++))
+    # Remove incomplete output to avoid future confusion.
+    [[ -f "$OUTPUT_PATH" ]] && rm -f "$OUTPUT_PATH"
+  fi
+done < <(find "$AUDIO_DIR" "${FIND_ARGS[@]}" -print0)
+
+printf 'Processed: %d | Success: %d | Skipped: %d | Failed: %d\n' \
+  "$TOTAL" "$SUCCESS" "$SKIPPED" "$FAILED"
+
+if [[ $FAILED -gt 0 ]]; then
+  exit 1
+fi

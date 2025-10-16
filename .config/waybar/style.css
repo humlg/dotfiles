@@ -161,7 +161,7 @@ tooltip { /* tooltip on hover */
     border-radius: 0px 13px 13px 0px;
     margin-left: 0px;
 }
-disk.warning{
+#disk.warning{
     color: #ff5555
 }
 

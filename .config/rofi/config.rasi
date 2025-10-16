@@ -1,4 +1,7 @@
 
 @theme "/home/david/.cache/wal/colors-rofi-dark.rasi"
 
+configuration {
+    font: "JetBrainsMono Nerd Font 12";
+}
 
