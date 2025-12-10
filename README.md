@@ -23,14 +23,13 @@
 - pavucontrol
 - cliphist
 - hyprshot
+- wtype
 
 # Planned:
 - resudo command that would execute last command with elevated privalage. *script*
-- Battery low warning noticication
 - Special baterry event driven actions (screen brightness, kb backlighting, power prifile?)
 - fix the fucking sound already!
 - script a SUPER+X scratchpad with terminal, todo, cava?
-- Remove vidible keys when entering password in SDDM
 
 ## Server maintanance
 - Check jellyfin server, update and clean

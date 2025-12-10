@@ -73,7 +73,7 @@
     "separate-outputs": true
   },
   "hyprland/workspaces": {
-    "format": "{id}",
+    "format": "{name}",
     "on-click": "activate",
     "format-icons": {
       "1": "",

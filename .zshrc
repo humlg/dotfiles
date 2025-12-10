@@ -111,6 +111,12 @@ alias la="ls -la --color"
 alias ll="ls -l --color"
 alias cl="clear"
 alias al="sl"
+alias i="fzpac S"
+alias r="fzpac R"
+alias ip="ip -c"
+
+#venvs
+alias whisperx-env="source ~/whisperx/bin/activate"
 
 #Commands to be run on launch of terminal
 fastfetch
