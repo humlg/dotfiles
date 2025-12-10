@@ -208,9 +208,10 @@ progressbar {
     margin:  20px 6px;
 }
 
-  /* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
+/* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
 .widget-mpris-player {
-    background-color: @background-sec;
+    background: opacity 1;
+    background-opacity: 1;
     border-radius: 22px;
     padding: 6px 14px;
     margin: 6px;
