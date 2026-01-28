@@ -207,7 +207,7 @@ tooltip { /* tooltip on hover */
 }
 
 #battery {
-    border-radius: 0px 13px 13px 0px;
+    border-radius: 13px 13px 13px 13px;
     margin-left: 0px;
     margin-right:0px;
     color: @color2;

@@ -47,3 +47,6 @@ Host nas
     HostName 192.168.4.180
     Port 22
     User sshd
+Host YG-MiniVPS
+	Port 22
+	User yguser
