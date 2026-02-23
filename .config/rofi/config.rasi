@@ -1,5 +1,5 @@
 
-@theme "/home/david/.cache/wal/colors-rofi-dark.rasi"
+//@theme "/home/david/.cache/wal/colors-rofi-dark.rasi"
 
 configuration {
     font: "JetBrainsMono Nerd Font 12";
@@ -16,3 +16,5 @@ listview {
   lines: 10;
   columns: 1;
 }
+
+@theme "/usr/share/rofi/themes/DarkBlue.rasi"
